@@ -1,218 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohamed Kafsi - AI Director, ML Researcher, Conference Founder">
+    <meta name="author" content="Mohamed Kafsi">
+    <title>Mohamed Kafsi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f4f3ee;
+            --text: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --link: #1a1a1a;
+            --toggle-bg: #e0dfd8;
+            --toggle-knob: #1a1a1a;
+        }
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="Mohamed Kafsi">
-	<link rel="icon" href="/web/20240117174737im_/http://www.mkafsi.ch/favicon.ico">
+        [data-theme="dark"] {
+            --bg: #1a1a1a;
+            --text: #f4f3ee;
+            --text-secondary: #b8b8b8;
+            --link: #f4f3ee;
+            --toggle-bg: #3a3a3a;
+            --toggle-knob: #f4f3ee;
+        }
 
-	<title>Mohamed Kafsi</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-	<style>
-		body {
-			font-family: Helvetica, sans-serif;
-			line-height: 1.2;
-			background-color: #f8f9fa6c;
-		}
-		.section-title {
-			border-bottom: 2px solid #007bff;
-			padding-bottom: 10px;
-			margin-bottom: 20px;
-		}
-		.list-styled {
-			list-style-type: none;
-			padding-left: 0;
-		}
-		.list-styled li {
-			margin-bottom: 10px;
-		}
-		.list-styled li::before {
-			content: "•";
-			color: #007bff;
-			font-weight: bold;
-			display: inline-block;
-			width: 1em;
-			margin-left: -1em;
-		}
-		.content-section {
-			background-color: #ffffff;
-			border-radius: 8px;
-			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-			padding: 30px;
-			margin-bottom: 30px;
-		}
-		#portrait {
-			border: 4px solid #ffffff;
-			box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-		}
-	</style>
-	<link rel="stylesheet" href="css/style.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        .toggle {
+            width: 52px;
+            height: 28px;
+            background-color: var(--toggle-bg);
+            border-radius: 14px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s ease;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background-color: var(--toggle-knob);
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        [data-theme="dark"] .toggle::after {
+            transform: translateX(24px);
+        }
+
+        .intro {
+            margin-bottom: 2.5rem;
+            font-size: 1.25rem;
+        }
+
+        .intro p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 1.25rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            font-size: 1.15rem;
+        }
+
+        li::marker {
+            color: var(--text-secondary);
+        }
+
+        .year {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .note {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .publication-venue {
+            font-style: italic;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--toggle-bg);
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 16px;
+            }
+            
+            .container {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-secondary">
-		<div class="container">
-			<a class="navbar-brand" href="#home">M. Kafsi</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
-					<li class="nav-item"><a class="nav-link" href="#press">Press</a></li>
-					<li class="nav-item"><a class="nav-link" href="#software">Software</a></li>
-					<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+    <div class="container">
+        <header>
+            <h1>Mohamed Kafsi</h1>
+            <div class="toggle" role="button" aria-label="Toggle dark mode" tabindex="0"></div>
+        </header>
 
-	<div class="container mt-4 pt-4">
-		<div class="content-section">
-			<div class="row align-items-start">
-				<div class="col-md-4 mb-4 mb-md-0">
-					<img id="portrait" src="portrait_kafsi.JPG" class="img-fluid rounded" alt="Mohamed Kafsi" style="width: 80%; max-width: 600px;">
-				</div>
-				<div class="col-md-8">
-					<h1 id="home" class="mb-4">Mohamed Kafsi</h1>
-					<div>
-						<p>I am passionate about building technology (AI, software, and analytics) that enhances human capabilities to solve real-world problems. </p> 
-						<p>With over 15 years of experience across academia and industry, both in Europe and the US, I have a proven track record in the Big Data, ML, and AI ecosystem. I specialize in leading teams that build and manage large-scale, distributed data and AI products.</p> 
-						<p>I am the co-founder of one of the largest AI conferences in Africa, <a target="_blank" href="https://appliedmldays.org/events/amld-africa-2021">Applied Machine Learning Days Africa</a> (3'000 registred, 80 speakers, 100+ countries)</p>
-						<p>I currently work as the Head of AI Innovation at <a target="_blank" href="https://www.nexthink.com/">Nexthink</a> (unicorn focused on human-centric IT)</p>
-						<p> I have studied at
-							<a target="_blank" href="http://www.epfl.ch/">EPFL</a> (PhD in Machine Learning) and <a href="https://web.archive.org/web/20240117174737/http://www.cmu.edu/">Carnegie Mellon University </a> (Pittsburgh, USA)
-						</p>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="content-section">
-			<h2 id="Work experiences" class="section-title">Work experiences</h2>
-			<div>
-				<ul class="list-styled">
-					<li><a href="https://www.nexthink.com/">Nexthink</a> in Lausanne, Switzerland</li>
-					<li><a target="_blank" href="https://www.swisscom.ch/en/about/company/portrait.html">Swisscom</a> (Data, Analytics and AI department) in Bern, Switzerland</li>
-					<li><a href="http://labs.yahoo.com/">Yahoo! Labs</a> (Machine Learning group) in San Francisco, USA</li>
-					<li><a href="http://research.nokia.com/">Nokia Research Center</a> (Internet Laboratory) in Helsinki, Finland</li>
-					<li><a href="http://www.laboratories.telekom.com/">Deutsche Telekom T-labs</a> in Berlin, Germany</li>
-				</ul>
-			</div>
-		</div>
-		<div class="content-section">
-			<h2 id="talks" class="section-title">Recent Talks</h2>
-			<div>
-				<ul class="list-styled">
-					<li> <a href="https://web.archive.org/web/20240117174737/https://youtu.be/0BxMNNYiLCI"> Opening AMLD Africa</a>, 2021 </li>
-					<li> <a href="https://web.archive.org/web/20240117174737/https://youtu.be/fDm-tf7M_Ds"> Closing AMLD Africa</a>, 2021 </li>
-					<li> <a href="https://web.archive.org/web/20240117174737/https://appliedmldays.org/schedule">Data and Machine Learning: A Catalyst for a More Sustainable Behavior?</a>, Applied Machine Learning Days, EPFL, 2020</li>
-					<li> <a href="https://web.archive.org/web/20240117174737/https://spark-summit.org/eu-2016/events/mobility-insights-at-swisscom-understanding-collective-mobility-in-switzerland/"> Understanding Collective Mobility in Switzerland </a> at Data + AI summit, Brussels, 2016</li>
-				</ul>
-			</div>
-		</div>
-		<div class="content-section">
-			<h2 id="publications" class="section-title">Blog Publications</h2>
-			<div>
-				<ul class="list-styled">
-					<li> Teaching AI to Speak Nexthink Query Language: Lessons from Nexthink Assist <a href="https://nexthink.com/blog/teaching-ai-to-speak-nexthink-query-language-lessons-from-nexthink-assist">blogpost</a></li>
-					<li> Why Do AI Projects Fail? A Playbook for Success in AI Projects <a href="https://medium.com/codex/why-do-ai-projects-fail-a-playbook-for-success-in-ai-projects-c4f73a6ce3e0?source=friends_link&amp;sk=b6005fa527ae07620891f1c9b4dcb387">medium</a></li>
-					<li> How to Quantify the Impact of COVID-19 Measures on Urban Density? A data-driven approach with Python and REST APIs <a href="https://web.archive.org/web/20240117174737/https://mkafsi.medium.com/mobility-evolution-in-switzerland-in-times-of-covid-19-2fa3ceaa778?source=friends_link&amp;sk=a4fd1e367fb1b6bda25818484531b77d"> medium </a></li>
-					<li> Quantifying the Accuracy of Mobility Insights from Cellular Network Data <a href="https://web.archive.org/web/20240117174737/https://medium.com/@mohamed.kafsi/quantifying-the-accuracy-of-mobility-insights-from-cellular-network-data-e5b83437a609?source=friends_link&amp;sk=c48568d5d022a455e7b4bf0c530e09e6"> medium </a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="content-section">
-			<h2 id="software" class="section-title">Software</h2>
-			<div>
-				<ul class="list-styled">
-					<li>Contributor to a Natural Language Processing (NLP) library <a href="https://web.archive.org/web/20240117174737/https://github.com/scalanlp/breeze"> ScalaNLP </a></li>
-					<li>My code (Scala and Python) on<a href="https://web.archive.org/web/20240117174737/https://github.com/mou7/"> GitHub </a> with applications to machine learning, graph theory and information theory</li>
-				</ul>
-			</div>
-		</div>
-		<div class="content-section">
-			<h2 id="awards" class="section-title">Awards</h2>
-			<div>
-				<ul class="list-styled">
-					<li>Winner of the <a href="https://web.archive.org/web/20240117174737/https://www.idiap.ch/project/mdc/publications"> Nokia Mobile Data Challenge </a>
-						<span class="label label-success">Best human mobility predictor</span></li>
-					</ul>
-				</div>
-			</div>
-			<div class="content-section">
-				<h2 id="patents" class="section-title">Patents</h2>
-				<div>
-					<ul class="list-styled">
-						<li><strong>Method and System of Generating and Using a Geographical Hierarchy Model</strong> US Patent App. 14/445,724, 2016.</li>
-					</ul>
-				</div>
-			</div>
-			<div class="content-section">
-				<h2 id="papers" class="section-title">Scientific Papers</h2>
-				<div>
-					<ul class="list-styled">
-						<li>Uncovering Latent Behaviors in Ant Colonies, <em>in SDM</em>, 2016 <a href="https://web.archive.org/web/20240117174737/https://infoscience.epfl.ch/record/224078">pdf</a></li>
-						<li>Inferring Waypoints without Time Information: Conditional Markov Entropy for Trajectory Segmentation, <em>in IEEE ICDM</em>, 2015</li>
-						<li>Mining, Modeling and Predicting Mobility, <em>EPFL</em>, 2015 <a href="publications/thesis_kafsi_minimal_version">pdf</a></li>
-						<li>Describing and Understanding Neighborhood Characteristics through Online Social Media, <em>in ACM WWW</em>, 2015</li>
-						<li>The Entropy of Conditional Markov Trajectories, <em>in IEEE Transactions on Information Theory</em>, 2013</li>
-						<li>Mitigating Epidemics through Mobile Micro-measures, <em>NetMob</em>, 2013 </li>
-						<li>Where to go from here? Mobility prediction from instantaneous information <em> Pervasive and Mobile Computing Journal</em>, 2013 </li>
-						<li>Been There, Done That: What Your Mobility Traces Reveal about Your Behavior<em>Int. Conf. on Pervasive Computing</em>, 2012</li>
-						<li>VANET Connectivity Analysis<em>, IEEE Globecom</em>, 2009</li></ul>
-						</div>
-					</div>
-					<div class="content-section">
-						<h2 id="press" class="section-title">Press coverage</h2>
-						<div>
-							<ul class="list-styled">
-								<li><a href="https://www.rts.ch/play/tv/19h30/video/swisscom-developpe-les-smart-city-au-moyen-des-donnees-de-ses-clients?id=8120614">Machine learning and smart city @Swisscom </a> <span class="award"><span class="glyphicon glyphicon-certificate"></span> TV interview</span>
-									<li><a href="https://www.rts.ch/play/tv/19h30/video/climathon-a-lausanne-challenge-de-24-heures-non-stop-a-faire-emerger-les-meilleures-solutions-pour-lenvironnement-?id=9948602&amp;expandDescription=true">Climathon: data for good @Swisscom </a> <span class="award"><span class="glyphicon glyphicon-certificate"></span> TV interview</span></li>
-									<li><a href="http://phys.org/news/2012-06-youre.html">The phone that knows where you're going</a></li>
-									<li>
-										<a href="http://www.lesechos.fr/26/06/2012/LesEchos/21213-039-ECH_quand-le-telephone-mobile-predira-nos-comportements.htm"> Quand le téléphone mobile prédira nos comportements</a></li>
-										<li><a href="http://www.24heures.ch/vaud-regions/etudiants-epfl-predisent-deplacements-dutilisateurs-telephones-mobiles/story/22057623">Des étudiants de l'EPFL prédisent les déplacements d'utilisateurs de téléphones mobiles </a></li>
-										<li><a href="http://www.tagesanzeiger.ch/digital/mobil/Das-Handy-weiss-wo-Sie-sein-werden/story/28625345">Das Handy weiss, wo Sie sein werden</a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="content-section">
-								<h2 id="contact" class="section-title">More about me</h2>
-								<div>
-									<ul class="list-styled">
-										
-										<li>Taught about software, coding and machine learning to high school students in Switzerland</li>
-										<li>In 2011, co-founded TUNES, association of Tunisian students in Switzerland</li>
-										<li>Radio reporter for the Swiss radio with interviews broadcasted live</li>
-										<li>My <a href="https://twitter.com/mou7">Twitter account </a></li>
-										<li>You can contact me at mohamed.mylastname@gmail.com</li>
-									</ul>
-								</div>
-							</div>
-						</div><!-- /.container -->
+        <div class="intro">
+            <p>I am passionate about building technology—AI, software, and analytics—that enhances human capabilities to solve real-world problems.</p>
 
-						<footer class="bg-light text-center py-3 mt-5">
-							<div class="container">
-								<p>&copy; 2024 Mohamed Kafsi. All rights reserved.</p>
-							</div>
-						</footer>
+            <p>With over 15 years of experience across academia and industry, both in Europe and the US, I have a proven track record in the Big Data, ML, and AI ecosystem. I specialize in leading teams that build and manage large-scale, distributed data and AI products.</p>
 
-						<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-						<script>
-							document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-								anchor.addEventListener('click', function (e) {
-									e.preventDefault();
-									document.querySelector(this.getAttribute('href')).scrollIntoView({
-										behavior: 'smooth'
-									});
-								});
-							});
-						</script>
-					</body>
-					</html>
+            <p>I am the co-founder of <a href="https://appliedmldays.org/events/amld-africa-2021" target="_blank">Applied Machine Learning Days Africa</a>, one of the largest AI conferences in Africa with 3,000 registered participants, 80 speakers, and attendees from over 100 countries.</p>
+
+            <p>I currently work as AI Director at <a href="https://www.nexthink.com/" target="_blank">Nexthink</a>, a unicorn focused on human-centric IT. I studied at <a href="http://www.epfl.ch/" target="_blank">EPFL</a> (PhD in Machine Learning) and <a href="http://www.cmu.edu/" target="_blank">Carnegie Mellon University</a>.</p>
+        </div>
+
+        <section>
+            <h2>Experience</h2>
+            <ul>
+                <li><a href="https://www.nexthink.com/" target="_blank">Nexthink</a>, Lausanne</li>
+                <li><a href="https://www.swisscom.ch/en/about/company/portrait.html" target="_blank">Swisscom</a> Data, Analytics & AI, Bern</li>
+                <li><a href="http://labs.yahoo.com/" target="_blank">Yahoo! Labs</a> Machine Learning, San Francisco</li>
+                <li><a href="http://research.nokia.com/" target="_blank">Nokia Research Center</a>, Helsinki</li>
+                <li><a href="http://www.laboratories.telekom.com/" target="_blank">Deutsche Telekom T-labs</a>, Berlin</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Talks</h2>
+            <ul>
+                <li><a href="https://youtu.be/0BxMNNYiLCI" target="_blank">Opening AMLD Africa</a>, <span class="year">2021</span></li>
+                <li><a href="https://youtu.be/fDm-tf7M_Ds" target="_blank">Closing AMLD Africa</a>, <span class="year">2021</span></li>
+                <li><a href="https://appliedmldays.org/schedule" target="_blank">Data and Machine Learning: A Catalyst for a More Sustainable Behavior?</a>, EPFL, <span class="year">2020</span></li>
+                <li><a href="https://spark-summit.org/eu-2016/events/mobility-insights-at-swisscom-understanding-collective-mobility-in-switzerland/" target="_blank">Understanding Collective Mobility in Switzerland</a>, Data + AI Summit, <span class="year">2016</span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Writing</h2>
+            <ul>
+                <li><a href="https://nexthink.com/blog/teaching-ai-to-speak-nexthink-query-language-lessons-from-nexthink-assist" target="_blank">Teaching AI to Speak Nexthink Query Language</a></li>
+                <li><a href="https://medium.com/codex/why-do-ai-projects-fail-a-playbook-for-success-in-ai-projects-c4f73a6ce3e0" target="_blank">Why Do AI Projects Fail? A Playbook for Success</a></li>
+                <li><a href="https://mkafsi.medium.com/mobility-evolution-in-switzerland-in-times-of-covid-19-2fa3ceaa778" target="_blank">How to Quantify the Impact of COVID-19 Measures on Urban Density</a></li>
+                <li><a href="https://medium.com/@mohamed.kafsi/quantifying-the-accuracy-of-mobility-insights-from-cellular-network-data-e5b83437a609" target="_blank">Quantifying the Accuracy of Mobility Insights from Cellular Network Data</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Research</h2>
+            <ul>
+                <li>Uncovering Latent Behaviors in Ant Colonies, <span class="publication-venue">SDM</span>, <span class="year">2016</span></li>
+                <li>Inferring Waypoints without Time Information, <span class="publication-venue">IEEE ICDM</span>, <span class="year">2015</span></li>
+                <li>Mining, Modeling and Predicting Mobility, <span class="publication-venue">EPFL Thesis</span>, <span class="year">2015</span></li>
+                <li>Describing and Understanding Neighborhood Characteristics through Online Social Media, <span class="publication-venue">ACM WWW</span>, <span class="year">2015</span></li>
+                <li>The Entropy of Conditional Markov Trajectories, <span class="publication-venue">IEEE Trans. Information Theory</span>, <span class="year">2013</span></li>
+                <li>Where to go from here? Mobility prediction from instantaneous information, <span class="publication-venue">Pervasive and Mobile Computing</span>, <span class="year">2013</span></li>
+                <li>Been There, Done That: What Your Mobility Traces Reveal about Your Behavior, <span class="publication-venue">Pervasive Computing</span>, <span class="year">2012</span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Software</h2>
+            <ul>
+                <li>Contributor to <a href="https://github.com/scalanlp/breeze" target="_blank">ScalaNLP</a>, a natural language processing library</li>
+                <li>Machine learning, graph theory, and information theory code on <a href="https://github.com/mou7/" target="_blank">GitHub</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Awards & Patents</h2>
+            <ul>
+                <li>Winner of the <a href="https://www.idiap.ch/project/mdc/publications" target="_blank">Nokia Mobile Data Challenge</a> — Best human mobility predictor</li>
+                <li>Method and System of Generating and Using a Geographical Hierarchy Model, <span class="note">US Patent</span>, <span class="year">2016</span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Press</h2>
+            <ul>
+                <li><a href="https://www.rts.ch/play/tv/19h30/video/swisscom-developpe-les-smart-city-au-moyen-des-donnees-de-ses-clients?id=8120614" target="_blank">Machine learning and smart city @Swisscom</a>, RTS TV</li>
+                <li><a href="https://www.rts.ch/play/tv/19h30/video/climathon-a-lausanne-challenge-de-24-heures-non-stop-a-faire-emerger-les-meilleures-solutions-pour-lenvironnement-?id=9948602" target="_blank">Climathon: data for good @Swisscom</a>, RTS TV</li>
+                <li><a href="http://phys.org/news/2012-06-youre.html" target="_blank">The phone that knows where you're going</a>, Phys.org</li>
+                <li><a href="http://www.lesechos.fr/26/06/2012/LesEchos/21213-039-ECH_quand-le-telephone-mobile-predira-nos-comportements.htm" target="_blank">Quand le téléphone mobile prédira nos comportements</a>, Les Echos</li>
+                <li><a href="http://www.24heures.ch/vaud-regions/etudiants-epfl-predisent-deplacements-dutilisateurs-telephones-mobiles/story/22057623" target="_blank">Des étudiants de l'EPFL prédisent les déplacements</a>, 24 Heures</li>
+                <li><a href="http://www.tagesanzeiger.ch/digital/mobil/Das-Handy-weiss-wo-Sie-sein-werden/story/28625345" target="_blank">Das Handy weiss, wo Sie sein werden</a>, Tages-Anzeiger</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Beyond Work</h2>
+            <ul>
+                <li>Taught software, coding, and machine learning to high school students in Switzerland</li>
+                <li>Co-founded TUNES, association of Tunisian students in Switzerland, <span class="year">2011</span></li>
+                <li>Radio reporter for Swiss radio with live interviews</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Contact</h2>
+            <ul>
+                <li><a href="https://twitter.com/mou7" target="_blank">Twitter</a></li>
+                <li><a href="mailto:mohamed.kafsi@gmail.com">mohamed.kafsi@gmail.com</a></li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>© 2025 Mohamed Kafsi</p>
+        </footer>
+    </div>
+
+    <script>
+        const toggle = document.querySelector('.toggle');
+        const html = document.documentElement;
+        
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+            html.setAttribute('data-theme', 'dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        });
+
+        toggle.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                toggle.click();
+            }
+        });
+    </script>
+</body>
+</html>
