@@ -57,7 +57,7 @@
         header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             margin-bottom: 2.5rem;
         }
 
@@ -65,6 +65,27 @@
             font-size: 2rem;
             font-weight: 500;
             letter-spacing: -0.02em;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .portrait {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            opacity: 0.92;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        [data-theme="dark"] .portrait {
+            opacity: 0.85;
+            filter: brightness(0.95);
         }
 
         .toggle {
@@ -76,7 +97,6 @@
             position: relative;
             transition: background-color 0.3s ease;
             flex-shrink: 0;
-            margin-top: 0.25rem;
         }
 
         .toggle::after {
@@ -180,7 +200,10 @@
 <body>
     <div class="container">
         <header>
-            <h1>Mohamed Kafsi</h1>
+            <div class="header-left">
+                <img src="mk_portrait_sketch.png" alt="Mohamed Kafsi" class="portrait">
+                <h1>Mohamed Kafsi</h1>
+            </div>
             <div class="toggle" role="button" aria-label="Toggle dark mode" tabindex="0"></div>
         </header>
 
